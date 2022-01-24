@@ -1,6 +1,5 @@
 package com.nttdata.bootcamp.customer.Customer.model;
 
-import com.nttdata.bootcamp.customer.Customer.model.dto.ProductDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,10 +7,10 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 import java.util.UUID;
 
 @Getter
@@ -24,19 +23,25 @@ public class Customer {
 
     @Id
     private String id = UUID.randomUUID().toString();
+    @Field(name = "first_name")
     private String firstName;
+    @Field(name = "last_name")
     private String lastName;
     private String email;
     private String phone;
-    private String typeDocument;
-    private String document;
-    private String typeClient;
-    private Date createdAt;
+    @Field(name = "document_type")
+    private String documentType;
+    @Field(name = "document_number")
+    private String documentNumber;
+    @Field(name = "customer_type")
+    private String customerType;
+    @Field(name = "created_by")
+    private String createdBy;
+    @Field(name = "is_owner")
     private Boolean owner;
+    @Field(name = "is_active")
     private Boolean active;
-    private List<ProductDTO> product = new ArrayList<>();
+    @Field(name = "created_at")
+    private Date createdAt;
 
-    public void addProduct(ProductDTO p) {
-        this.product.add(p);
-    }
 }

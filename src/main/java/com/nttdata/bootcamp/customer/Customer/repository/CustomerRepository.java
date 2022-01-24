@@ -9,5 +9,5 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface CustomerRepository extends ReactiveMongoRepository<Customer, String> {
     Flux<Customer> findAllByActiveIsTrue();
-    Flux<Customer> findCustomerByTypeDocumentAndDocument(String typeDocuemnt, String document);
+    Flux<Customer> findCustomerByDocumentTypeAndDocumentNumber(String DocumentType, String DocumentNumber);
 }

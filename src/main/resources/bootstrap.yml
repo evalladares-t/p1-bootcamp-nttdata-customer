@@ -3,6 +3,7 @@ spring:
     name: customer-service
   cloud:
     config:
+      enabled: true
       uri: http://localhost:8081
       username: root
       password: s3cr3t

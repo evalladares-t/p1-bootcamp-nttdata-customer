@@ -2,11 +2,8 @@ package com.nttdata.bootcamp.customer.Customer.expose;
 
 import com.nttdata.bootcamp.customer.Customer.bussiness.CustomerService;
 import com.nttdata.bootcamp.customer.Customer.model.Customer;
-import com.nttdata.bootcamp.customer.Customer.model.dto.RegisterMovementDTO;
-import com.nttdata.bootcamp.customer.Customer.model.dto.RegisterProductoDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,29 +45,10 @@ public class CustomerController {
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
     }
 
-    //Register Product
-    @PostMapping("/product")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Mono<ResponseEntity<Mono<Customer>>> registerProduct(@RequestBody RegisterProductoDTO objRegister){
-        return Mono.just(ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(customerService.registerProduct(objRegister)));
-    }
-
-    //Register Movement
-    @PostMapping("/movement")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Mono<ResponseEntity<Mono<Customer>>> registerMovement(@RequestBody RegisterMovementDTO objMovement){
-        return Mono.just(ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(customerService.registerMovement(objMovement)));
-    }
-
     //Detail
     @GetMapping("/{id}")
     public Mono<Customer> show(@PathVariable("id") String id) {
         log.info("byId>>>>>");
-        System.out.println(id);
         return customerService.findById(id);
     }
 
