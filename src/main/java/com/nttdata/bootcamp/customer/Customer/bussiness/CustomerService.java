@@ -10,6 +10,7 @@ import reactor.core.publisher.Mono;
 public interface CustomerService {
     Flux<Customer> create(Customer customer);
     Flux<Customer> findAll();
+    Mono<Customer> findByPhone(String phone);
     Mono<Customer> findById(String customerId);
     Mono<Customer> update(Customer customer);
     Mono<Customer> remove(String customerId);

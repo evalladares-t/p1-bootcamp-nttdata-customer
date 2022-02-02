@@ -60,4 +60,13 @@ public class CustomerController {
                 .flatMap(customer -> Mono.just(ResponseEntity.ok(customer)))
                 .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
     }
+
+    //Detail
+    @GetMapping("/by_phone")
+    public Mono<ResponseEntity<Mono<Customer>>> byPhone(@RequestParam("phone") String phone) {
+      log.info("byPhone>>>>>");
+      return Mono.just(ResponseEntity.ok()
+              .contentType(MediaType.APPLICATION_JSON)
+              .body(customerService.findByPhone(phone)));
+    }
 }

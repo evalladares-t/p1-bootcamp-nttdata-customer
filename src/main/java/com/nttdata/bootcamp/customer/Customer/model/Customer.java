@@ -29,6 +29,8 @@ public class Customer {
     private String lastName;
     private String email;
     private String phone;
+    @Field(name = "imei_phone")
+    private String imeiPhone;
     @Field(name = "document_type")
     private String documentType;
     @Field(name = "document_number")

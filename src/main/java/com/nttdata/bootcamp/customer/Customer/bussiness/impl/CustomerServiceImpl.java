@@ -43,7 +43,12 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findAllByActiveIsTrue();
     }
 
-    @Override
+  @Override
+  public Mono<Customer> findByPhone(String phone) {
+    return customerRepository.findByPhone(phone);
+  }
+
+  @Override
     public Mono<Customer> findById(String customerId) {
         return customerRepository.findById(customerId);
     }
